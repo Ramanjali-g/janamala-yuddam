@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>జనమల యుద్ధం - సామాజిక సేవ</title>
+    <!-- Google Fonts for Telugu -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pastel-blue: #e0f2fe;
+            --pastel-green: #dcfce7;
+            --pastel-peach: #ffedd5;
+            --pastel-lavender: #f5f3ff;
+            --off-white: #fdfcfb;
+            --text-dark: #334155;
+            --primary-accent: #60a5fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Guntur', sans-serif;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-lavender) 100%);
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #1e40af;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary { background-color: var(--primary-accent); color: white; }
+        .btn-secondary { background-color: white; color: var(--text-dark); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+
+        /* Sections General */
+        section { padding: 80px 5%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--pastel-peach);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Us */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .service-card:nth-child(even) { background: var(--pastel-green); }
+        .service-card:nth-child(odd) { background: var(--pastel-blue); }
+
+        .service-card i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #475569;
+        }
+
+        /* Areas Section */
+        .areas-box {
+            background: var(--pastel-peach);
+            padding: 40px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .area-item { font-size: 1.5rem; font-weight: 600; padding: 10px; }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            height: 200px;
+            background: #e2e8f0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            overflow: hidden;
+            border: 4px solid white;
+        }
+
+        /* Daily Activity */
+        .daily-update {
+            background: white;
+            border-left: 8px solid var(--primary-accent);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-info i { color: var(--primary-accent); width: 30px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        footer {
+            background: #f8fafc;
+            padding: 50px 5%;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--text-dark);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">జనమల యుద్ధం</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1 data-aos="fade-up">జనమల యుద్ధం – ప్రజా సేవ కోసం మా పోరాటం</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            “ప్రజల సమస్యల పరిష్కారమే మా లక్ష్యం. ప్రజల మధ్యకు వెళ్లి, వారి సమస్యలను విని, అధికారులతో మాట్లాడి చర్యలు తీసుకునే సామాజిక సేవా కార్యక్రమం.”
+        </p>
+        <div class="btn-group" data-aos="fade-up" data-aos-delay="200">
+            <a href="tel:+919912724567" class="btn btn-primary"><i class="fas fa-phone"></i> Contact Us</a>
+            <a href="#services" class="btn btn-secondary">🤝 Our Work</a>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about">
+        <h2 class="section-title" data-aos="fade-up">మా గురించి</h2>
+        <div class="about-content" data-aos="zoom-in">
+            <p>జనమల యుద్ధం అనేది ప్రజల సమస్యల పరిష్కారమే లక్ష్యంగా పని చేసే సామాజిక సేవా కార్యక్రమం. ప్రజల మధ్యకు వెళ్లి వారి సమస్యలను ప్రత్యక్షంగా విని, సంబంధిత అధికారులతో మాట్లాడి తక్షణ పరిష్కార చర్యలు తీసుకోవడం మా ప్రధాన ఉద్దేశ్యం.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <h2 class="section-title" data-aos="fade-up">మేము చేసే సేవలు</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <i class="fas fa-faucet-drip"></i>
+                <h3>Drinking Water Issues</h3>
+                <p>తాగునీరు సమస్యలు</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-road"></i>
+                <h3>Road Problems</h3>
+                <p>రోడ్ల సమస్యలు</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-faucet"></i>
+                <h3>Drainage & Sanitation</h3>
+                <p>డ్రైనేజీ సమస్యలు</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Street Lights</h3>
+                <p>వీధి దీపాలు</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-hands-holding-child"></i>
+                <h3>Support for Poor</h3>
+                <p>పేద కుటుంబాల సమస్యలు</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-users-rays"></i>
+                <h3>Public Grievance</h3>
+                <p>ప్రజా సమస్యల పరిష్కారం</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas -->
+    <section>
+        <h2 class="section-title" data-aos="fade-up">మా సేవా ప్రాంతాలు</h2>
+        <div class="areas-box" data-aos="flip-up">
+            <div class="area-item">📍 కృష్ణలంక</div>
+            <div class="area-item">📍 విజయవాడ</div>
+            <div class="area-item">📍 కృష్ణా జిల్లా</div>
+        </div>
+    </section>
+
+    <!-- Daily Activity -->
+    <section>
+        <h2 class="section-title" data-aos="fade-up">ఈరోజు ప్రజా సేవ</h2>
+        <div class="daily-update" data-aos="fade-left">
+            <h3><i class="fas fa-calendar-day"></i> Daily Update</h3>
+            <p>“ఈరోజు కృష్ణలంక ప్రాంతంలో ప్రజల సమస్యలను ప్రత్యక్షంగా విని, తాగునీరు / పారిశుధ్యం / రోడ్ల సమస్యలపై అధికారులతో మాట్లాడి చర్యలు చేపట్టాం.”</p>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section>
+        <h2 class="section-title" data-aos="fade-up">మా కార్యక్రమాల ఫోటోలు</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in">Meetings</div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">Inspections</div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">Field Visits</div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">Office Events</div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title" data-aos="fade-up">సంప్రదించండి</h2>
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <p><i class="fas fa-map-marker-alt"></i> కృష్ణలంక, విజయవాడ, ఆంధ్రప్రదేశ్</p>
+                <p><i class="fas fa-phone"></i> +91 99127 24567</p>
+                <p><i class="fas fa-envelope"></i> U9news@gmail.com</p>
+            </div>
+            <form class="contact-form" data-aos="fade-left">
+                <input type="text" placeholder="మీ పేరు (Name)" required>
+                <input type="tel" placeholder="ఫోన్ నంబర్ (Phone)" required>
+                <textarea rows="4" placeholder="మీ సమస్య / సందేశం (Message)"></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2 style="color: var(--primary-accent)">జనమల యుద్ధం</h2>
+        <p>ప్రజల కోసం – ప్రజలతో</p>
+        <br>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <br>
+        <p>&copy; 2024 Janamala Yuddham. All rights reserved.</p>
+    </footer>
+
+    <!-- Animation Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
